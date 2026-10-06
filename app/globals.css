@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------
+   Base — brutalist monochrome canvas
+------------------------------------------------------------------ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    @apply bg-ink text-paper font-sans antialiased;
+  }
+
+  ::selection {
+    @apply bg-paper text-ink;
+  }
+
+  /* Custom slim scrollbar to match the palette */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-ink;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-steel;
+  }
+
+  ::placeholder {
+    @apply text-steel;
+  }
+}
+
+@layer components {
+  /* Shared micro-typography for technical/structural details */
+  .label {
+    @apply font-mono text-[10px] uppercase tracking-brutal text-steel sm:text-[11px];
+  }
+
+  .hairline {
+    @apply border-t border-white/10;
+  }
+
+  /* Faint architectural grid overlay used across sections */
+  .grid-overlay {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  /* Procedural concrete texture — no external assets required */
+  .concrete {
+    background-color: #171717;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.09) 0.5px, transparent 0.5px),
+      radial-gradient(rgba(0, 0, 0, 0.5) 0.5px, transparent 0.5px);
+    background-position: 0 0, 7px 9px;
+    background-size: 14px 14px, 14px 14px;
+  }
+
+  /* ----------------------------------------------------------------
+     Admin dashboard primitives — same brutalist language as the site
+  ---------------------------------------------------------------- */
+  .admin-card {
+    @apply border border-white/10 bg-carbon/70;
+  }
+
+  .admin-label {
+    @apply mb-2 block font-mono text-[10px] uppercase tracking-brutal text-steel;
+  }
+
+  .admin-input {
+    @apply w-full border border-white/15 bg-black/40 px-3 py-2.5 text-sm text-paper outline-none transition-colors placeholder:text-steel focus:border-paper;
+  }
+
+  .admin-textarea {
+    @apply admin-input min-h-[96px] resize-y leading-relaxed;
+  }
+
+  .admin-btn {
+    @apply inline-flex items-center justify-center gap-2 border border-white/25 px-4 py-2.5 font-mono text-[10px] uppercase tracking-brutal text-paper transition-colors hover:border-paper hover:bg-paper hover:text-ink disabled:cursor-not-allowed disabled:opacity-40;
+  }
+
+  .admin-btn-solid {
+    @apply admin-btn border-paper bg-paper text-ink hover:bg-transparent hover:text-paper;
+  }
+
+  .admin-btn-danger {
+    @apply admin-btn border-red-500/40 text-red-400 hover:border-red-500 hover:bg-red-500 hover:text-white;
+  }
+
+  .admin-nav-item {
+    @apply flex items-center gap-3 border-l-2 border-transparent px-4 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-steel transition-all hover:border-white/40 hover:text-paper;
+  }
+
+  .admin-nav-item-active {
+    @apply border-paper bg-white/5 text-paper;
+  }
+}
